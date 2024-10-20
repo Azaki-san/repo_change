@@ -6,6 +6,17 @@ import (
 	"time"
 )
 
+// MonkeySort (BogoSort) - сортировка обезьяны
+// Перемешивает массив до тех пор, пока он не отсортируется, это неэффективный алгоритм
+func MonkeySort(arr []int) []int {
+	for !isSorted(arr) {
+		rand.Shuffle(len(arr), func(i, j int) {
+			arr[i], arr[j] = arr[j], arr[i]
+		})
+	}
+	return arr
+}
+
 // QuickSort - быстрая сортировка
 func QuickSort(arr []int) []int {
 	if len(arr) < 2 {
